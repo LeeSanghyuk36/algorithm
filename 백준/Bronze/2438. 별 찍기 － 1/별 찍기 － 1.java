@@ -9,7 +9,9 @@ public class Main {
             for (int j = 1; j <= i; j++) {
                 System.out.print("*");
             }
-            System.out.println();
+            if (i == star) {
+                break;
+            } else System.out.println();
         }
         sc.close();
     }
