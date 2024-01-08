@@ -1,32 +1,28 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap; // HashMap을 사용하기 위한 import
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String alphabet = sc.nextLine();
 
-//        System.out.println(alphabet);
+        String word = sc.next(); // 알파벳 소문자로 이루어진 단어 입력 받기
 
-        /**
-         * 나온 알파벳을 어떻게 해야 돌릴 수 있나. 흠
-         * a~z array 만들고, for 돌면서 alphabet의 각 인덱스가 az의 a~z까지 각각 같은지 확인 하고, 같다면 그 차례에
-         * azIndexNumer 에 +1 을 하면 되는데.
-         */
-        int[] cnt = new int[26];
-        for (int i = 0; i < alphabet.length(); i++) {
-            cnt[alphabet.charAt(i) - 97]++;
-        }
-        for (int i = 0; i < 26; i++) {
-            System.out.print(cnt[i]+" ");
+        Map<Character, Integer> alphabetCount = new HashMap<>(); // 알파벳 개수를 저장할 HashMap
+
+        // 입력받은 단어의 각 알파벳 개수 카운팅
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            // HashMap에 해당 알파벳이 이미 있는지 확인하고, 있으면 기존 값에 1을 더하고, 없으면 1로 설정
+            alphabetCount.put(ch, alphabetCount.getOrDefault(ch, 0) + 1);
         }
 
-
-
+        // 결과 출력
+        for (char c = 'a'; c <= 'z'; c++) {
+            // HashMap에서 해당 알파벳의 값(value)을 가져오고, 없으면 0을 출력
+            System.out.print(alphabetCount.getOrDefault(c, 0) + " ");
+        }
 
         sc.close();
-
     }
 }
