@@ -15,14 +15,18 @@ public class Main {
          */
         Scanner sc = new Scanner(System.in);
         int x = sc.nextInt();
-        String binary = Integer.toBinaryString(x);
+        int sticLength = 64;
         int count = 0;
 
-        for (int i = 0; i < binary.length(); i++) {
-            if (binary.charAt(i) == '1') {
+        while (x > 0) {
+            if (sticLength > x) {
+                sticLength /= 2;
+            } else {
+                x -= sticLength;
                 count++;
             }
         }
+
         System.out.println(count);
 
     }
