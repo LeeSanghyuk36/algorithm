@@ -8,7 +8,8 @@ public class Main {
         int B = scanner.nextInt();
         int C = scanner.nextInt();
 
-        int maxMoves = Math.max(B - A, C - B) - 1;
+        int maxDiff = B - A > C - B ? B - A : C - B;
+        int maxMoves = maxDiff - 1;
         System.out.println(maxMoves);
 
         scanner.close();
